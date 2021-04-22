@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: ftps
+  name: ftps
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: ftps
+  template: 
+    metadata: 
+      labels: 
+        app: ftps
+    spec: 
+      containers: 
+        - 
+          image: deployment/ftps
+          imagePullPolicy: Never
+          name: ftps
+--- 
+apiVersion: v1
+kind: Service
+metadata: 
+  annotations: 
+    metallb.universe.tf/allow-shared-ip: key
+  name: ftps
+spec: 
+  ports: 
+    - 
+      name: ftps-command
+      port: 21
+      protocol: TCP
+      targetPort: 21
+    -
+      name: ftps-data
+      port: 1121
+      protocol: TCP
+      targetPort: 1121
+  selector: 
+    app: ftps
+  type: LoadBalancer

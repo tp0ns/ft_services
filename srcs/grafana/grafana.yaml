@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: grafana
+  name: grafana
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: grafana
+  template: 
+    metadata: 
+      labels: 
+        app: grafana
+    spec: 
+      containers: 
+        - 
+          image: deployment/grafana
+          imagePullPolicy: Never
+          name: grafana
+--- 
+apiVersion: v1
+kind: Service
+metadata: 
+  annotations: 
+    metallb.universe.tf/allow-shared-ip: key
+  name: grafana
+spec: 
+  ports: 
+    - 
+      name: grafana
+      port: 3000
+      protocol: TCP
+      targetPort: 3000
+  selector: 
+    app: grafana
+  type: LoadBalancer
