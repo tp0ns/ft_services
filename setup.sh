@@ -45,5 +45,5 @@ kubectl apply -f srcs/influxDB/influxdb.yaml
 kubectl apply -f srcs/grafana/grafana.yaml
 
 # Enable Dashboard and open it in the default web browser-#
-minikube status
+# minikube status
 minikube dashboard
