@@ -3,6 +3,8 @@ FROM	alpine:latest
 RUN		apk update && apk upgrade
 RUN		apk add influxdb
 
+RUN		mkdir -p /etc/influxdb && mv /etc/influxdb.conf /etc/influxdb/influxdb.conf
+
 #-----Telegraf-Setup-----#
 RUN		apk add telegraf
 COPY	./telegraf.conf /etc/telegraf/
