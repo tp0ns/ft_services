@@ -14,6 +14,7 @@ sed -i 's/MINIKUBE-IP/'$MINIKUBE_IP'/g' srcs/metallb.yaml
 sed -i 's/MINIKUBE-IP/'$MINIKUBE_IP'/g' srcs/nginx/nginx.conf
 sed -i 's/MINIKUBE-IP/'$MINIKUBE_IP'/g' srcs/nginx/index.html
 sed -i 's/MINIKUBE-IP/'$MINIKUBE_IP'/g' srcs/ftps/vsftpd.conf
+sed -i 's/MINIKUBE-IP/'$MINIKUBE_IP'/g' srcs/mysql/wordpress.sql
 
 #----------MetalLB Installation----------------#
 
